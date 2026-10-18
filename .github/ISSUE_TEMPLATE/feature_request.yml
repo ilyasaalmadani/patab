@@ -1,0 +1,49 @@
+name: Feature request
+description: Suggest a focused improvement that fits PATAB's philosophy.
+title: "[Feature]: "
+labels: ["enhancement", "needs triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        PATAB is intentionally small, local-first and dependency-free. Features that
+        require an account, a server or tracking are out of scope.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      description: Describe the user need, not just the implementation.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: How would it look and behave? Keep it as small as possible.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+  - type: dropdown
+    id: cost
+    attributes:
+      label: What does it add?
+      options:
+        - No new dependency or network request
+        - A new optional network request
+        - A new dependency (needs discussion)
+        - Not sure
+    validations:
+      required: true
+  - type: checkboxes
+    id: philosophy
+    attributes:
+      label: Philosophy check
+      options:
+        - label: It works without an account or a PATAB server.
+          required: true
+        - label: It does not add tracking or analytics.
+          required: true
+        - label: I am willing to help test or implement it.

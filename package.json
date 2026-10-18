@@ -1,0 +1,41 @@
+{
+  "name": "patab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A calm, local-first dashboard for your new tab: links, notes, tasks and focus in one quiet place.",
+  "type": "module",
+  "homepage": "https://ilyasaalmadani.github.io/patab/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilyasaalmadani/patab.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ilyasaalmadani/patab/issues"
+  },
+  "license": "MIT",
+  "author": "Ilyas Akbar Almadani",
+  "keywords": [
+    "new-tab",
+    "dashboard",
+    "startpage",
+    "local-first",
+    "productivity",
+    "vanilla-js",
+    "pwa",
+    "privacy"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "test": "node --test tests/",
+    "check": "node scripts/check.mjs",
+    "screenshots": "node scripts/screenshots.mjs",
+    "start": "node scripts/dev.mjs",
+    "test:e2e": "node scripts/e2e.mjs"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.64.1"
+  }
+}

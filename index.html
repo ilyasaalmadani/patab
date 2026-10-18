@@ -1,0 +1,688 @@
+<!doctype html>
+<html lang="en" data-theme="dark" data-accent="lime" data-bg="aurora">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PATAB — Your new tab, reimagined</title>
+    <meta
+      name="description"
+      content="A calm, local-first dashboard for your new tab. Links, notes, tasks and a focus timer in one beautiful place. No account, no cloud, no noise."
+    />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="application-name" content="PATAB" />
+    <meta name="author" content="Ilyas Akbar Almadani" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="PATAB" />
+    <meta name="theme-color" content="#07090e" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f3f1ec" media="(prefers-color-scheme: light)" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.google.com https://*.gstatic.com; connect-src 'self' https://api.open-meteo.com https://geocoding-api.open-meteo.com; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="PATAB — Your new tab, reimagined" />
+    <meta
+      property="og:description"
+      content="A calm, local-first dashboard: links, notes, tasks and focus in one quiet place."
+    />
+    <meta property="og:url" content="https://ilyasaalmadani.github.io/patab/" />
+    <meta property="og:image" content="https://ilyasaalmadani.github.io/patab/docs/og.png" />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="640" />
+    <meta property="og:image:alt" content="PATAB — a calm, local-first dashboard for your new tab" />
+    <meta property="og:site_name" content="PATAB" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="PATAB — Your new tab, reimagined" />
+    <meta
+      name="twitter:description"
+      content="A calm, local-first dashboard: links, notes, tasks and focus in one quiet place."
+    />
+    <meta name="twitter:image" content="https://ilyasaalmadani.github.io/patab/docs/og.png" />
+    <meta name="twitter:image:alt" content="PATAB — a calm, local-first dashboard for your new tab" />
+    <link rel="canonical" href="https://ilyasaalmadani.github.io/patab/" />
+    <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="assets/icon-192.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <script src="assets/theme.js"></script>
+    <link rel="stylesheet" href="assets/app.css" />
+    <script type="module" src="assets/app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="backdrop" aria-hidden="true">
+      <span class="backdrop__blob backdrop__blob--one"></span>
+      <span class="backdrop__blob backdrop__blob--two"></span>
+      <span class="backdrop__blob backdrop__blob--three"></span>
+      <span class="backdrop__grid"></span>
+      <span class="backdrop__grain"></span>
+    </div>
+
+    <svg class="sprite" aria-hidden="true" focusable="false">
+      <defs>
+        <symbol id="i-search" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="7" />
+          <path d="m16.5 16.5 4 4" />
+        </symbol>
+        <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" /></symbol>
+        <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" /></symbol>
+        <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7" /></symbol>
+        <symbol id="i-trash" viewBox="0 0 24 24">
+          <path d="M4 7h16M9 7V4h6v3M6.5 7l.8 13h9.4l.8-13M10 11v5M14 11v5" />
+        </symbol>
+        <symbol id="i-edit" viewBox="0 0 24 24">
+          <path d="M4 20h4l10.5-10.5a2.1 2.1 0 0 0-3-3L5 17v3Z" />
+          <path d="m13.5 6.5 3 3" />
+        </symbol>
+        <symbol id="i-folder" viewBox="0 0 24 24">
+          <path d="M3.5 7.5A2.5 2.5 0 0 1 6 5h4l2 2.5h6A2.5 2.5 0 0 1 20.5 10v7A2.5 2.5 0 0 1 18 19.5H6A2.5 2.5 0 0 1 3.5 17V7.5Z" />
+        </symbol>
+        <symbol id="i-external" viewBox="0 0 24 24">
+          <path d="M14 4h6v6M20 4l-9 9" />
+          <path d="M18 14v4.5A1.5 1.5 0 0 1 16.5 20h-11A1.5 1.5 0 0 1 4 18.5v-11A1.5 1.5 0 0 1 5.5 6H10" />
+        </symbol>
+        <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M14 7l5 5-5 5" /></symbol>
+        <symbol id="i-settings" viewBox="0 0 24 24">
+          <path d="M4 7h9M17 7h3M4 17h3M11 17h9" />
+          <circle cx="15" cy="7" r="2.5" />
+          <circle cx="8" cy="17" r="2.5" />
+        </symbol>
+        <symbol id="i-command" viewBox="0 0 24 24">
+          <path d="M9 6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3M9 18a3 3 0 1 1-3-3h12a3 3 0 1 1-3 3M9 9h6v6H9z" />
+        </symbol>
+        <symbol id="i-sun" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4" />
+        </symbol>
+        <symbol id="i-moon" viewBox="0 0 24 24">
+          <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a7 7 0 1 0 10.5 10.5Z" />
+        </symbol>
+        <symbol id="i-monitor" viewBox="0 0 24 24">
+          <rect x="3" y="4" width="18" height="13" rx="2" />
+          <path d="M8 21h8M12 17v4" />
+        </symbol>
+        <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5-11-6.5Z" /></symbol>
+        <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8.5 5v14M15.5 5v14" /></symbol>
+        <symbol id="i-reset" viewBox="0 0 24 24">
+          <path d="M4 10a8 8 0 1 1 2.2 8.5" />
+          <path d="M4 4v6h6" />
+        </symbol>
+        <symbol id="i-shield" viewBox="0 0 24 24">
+          <path d="M12 3 5 6v5.5c0 4.3 2.9 7.6 7 9.5 4.1-1.9 7-5.2 7-9.5V6l-7-3Z" />
+          <path d="m9 12 2 2 4-4" />
+        </symbol>
+        <symbol id="i-keyboard" viewBox="0 0 24 24">
+          <rect x="2.5" y="6" width="19" height="12" rx="2" />
+          <path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M8 14h8" />
+        </symbol>
+        <symbol id="i-download" viewBox="0 0 24 24">
+          <path d="M12 3v12M7 10l5 5 5-5M5 21h14" />
+        </symbol>
+        <symbol id="i-upload" viewBox="0 0 24 24">
+          <path d="M12 16V4M7 9l5-5 5 5M5 21h14" />
+        </symbol>
+        <symbol id="i-location" viewBox="0 0 24 24">
+          <path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11Z" />
+          <circle cx="12" cy="10" r="2.5" />
+        </symbol>
+        <symbol id="i-globe" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M3 12h18M12 3c2.5 2.8 3.8 6 3.8 9S14.5 18.2 12 21c-2.5-2.8-3.8-6-3.8-9S9.5 5.8 12 3Z" />
+        </symbol>
+        <symbol id="i-spark" viewBox="0 0 24 24">
+          <path d="M12 3l1.7 5.3L19 10l-5.3 1.7L12 17l-1.7-5.3L5 10l5.3-1.7L12 3Z" />
+          <path d="M18.5 16.5l.7 2.3 2.3.7-2.3.7-.7 2.3-.7-2.3-2.3-.7 2.3-.7.7-2.3Z" />
+        </symbol>
+        <symbol id="i-grip" viewBox="0 0 24 24">
+          <path d="M9 6h.01M15 6h.01M9 12h.01M15 12h.01M9 18h.01M15 18h.01" />
+        </symbol>
+        <symbol id="i-clock" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 7v5l3 2" />
+        </symbol>
+        <symbol id="i-cloud" viewBox="0 0 24 24">
+          <path d="M7 18a4.5 4.5 0 0 1-.6-9 6 6 0 0 1 11.5 1.2A3.9 3.9 0 0 1 17.5 18H7Z" />
+        </symbol>
+        <symbol id="i-cloud-sun" viewBox="0 0 24 24">
+          <circle cx="8" cy="8" r="3" />
+          <path d="M8 2v2M2 8h2M3.8 3.8l1.4 1.4M12.2 3.8l-1.4 1.4" />
+          <path d="M10 20a4 4 0 0 1-.4-8 5.5 5.5 0 0 1 10.5 1.1A3.5 3.5 0 0 1 19.5 20H10Z" />
+        </symbol>
+        <symbol id="i-rain" viewBox="0 0 24 24">
+          <path d="M7 15a4.5 4.5 0 0 1-.6-9 6 6 0 0 1 11.5 1.2A3.9 3.9 0 0 1 17.5 15H7Z" />
+          <path d="M8 18.5 7 21M12 18.5 11 21M16 18.5 15 21" />
+        </symbol>
+        <symbol id="i-snow" viewBox="0 0 24 24">
+          <path d="M7 15a4.5 4.5 0 0 1-.6-9 6 6 0 0 1 11.5 1.2A3.9 3.9 0 0 1 17.5 15H7Z" />
+          <path d="M8 19h.01M12 21h.01M16 19h.01" />
+        </symbol>
+        <symbol id="i-storm" viewBox="0 0 24 24">
+          <path d="M7 14a4.5 4.5 0 0 1-.6-9 6 6 0 0 1 11.5 1.2A3.9 3.9 0 0 1 17.5 14H7Z" />
+          <path d="m12 15-2 4h3l-1.5 3" />
+        </symbol>
+        <symbol id="i-fog" viewBox="0 0 24 24">
+          <path d="M7 13a4.5 4.5 0 0 1-.6-9 6 6 0 0 1 11.5 1.2A3.9 3.9 0 0 1 17.5 13H7Z" />
+          <path d="M4 17h16M6 20h12" />
+        </symbol>
+        <symbol id="i-install" viewBox="0 0 24 24">
+          <path d="M12 3v10M8 9l4 4 4-4" />
+          <path d="M5 15v4h14v-4" />
+        </symbol>
+        <symbol id="i-grid" viewBox="0 0 24 24">
+          <rect x="3.5" y="3.5" width="7" height="7" rx="1.5" />
+          <rect x="13.5" y="3.5" width="7" height="7" rx="1.5" />
+          <rect x="3.5" y="13.5" width="7" height="7" rx="1.5" />
+          <rect x="13.5" y="13.5" width="7" height="7" rx="1.5" />
+        </symbol>
+        <symbol id="i-note" viewBox="0 0 24 24">
+          <path d="M5 4.5h14v11l-4 4H5v-15Z" />
+          <path d="M15 20v-4.5h4M8 9h8M8 13h5" />
+        </symbol>
+        <symbol id="i-list" viewBox="0 0 24 24">
+          <path d="m3.5 6 1.5 1.5L8 4.5M3.5 12l1.5 1.5L8 10.5M3.5 18l1.5 1.5L8 16.5M11 6h9M11 12h9M11 18h9" />
+        </symbol>
+        <symbol id="i-timer" viewBox="0 0 24 24">
+          <circle cx="12" cy="13" r="8" />
+          <path d="M12 9v4l2.5 1.5M9 2h6M12 2v3" />
+        </symbol>
+        <symbol id="i-github" viewBox="0 0 24 24">
+          <path
+            fill="currentColor"
+            stroke="none"
+            d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-1.05-.01-1.9-2.78.62-3.37-1.21-3.37-1.21-.45-1.18-1.11-1.5-1.11-1.5-.91-.63.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.34 1.12 2.91.86.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9 0 1.38-.01 2.49-.01 2.83 0 .27.18.6.69.49A10.04 10.04 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"
+          />
+        </symbol>
+      </defs>
+    </svg>
+
+    <header class="topbar">
+      <div class="topbar__inner">
+        <a class="brand" href="./" aria-label="PATAB home">
+          <span class="brand__mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" role="img">
+              <rect width="32" height="32" rx="9" fill="currentColor" opacity=".12" />
+              <rect x="6" y="6" width="8.5" height="8.5" rx="2.5" fill="currentColor" opacity=".9" />
+              <rect x="17.5" y="6" width="8.5" height="8.5" rx="2.5" fill="var(--accent)" />
+              <rect x="6" y="17.5" width="8.5" height="8.5" rx="2.5" fill="currentColor" opacity=".55" />
+              <rect x="17.5" y="17.5" width="8.5" height="8.5" rx="2.5" fill="currentColor" opacity=".3" />
+            </svg>
+          </span>
+          <span class="brand__word">patab</span>
+          <span class="brand__tag">papan tab</span>
+        </a>
+
+        <nav class="boards" id="boards" aria-label="Boards"></nav>
+
+        <div class="topbar__actions">
+          <button class="search-trigger" type="button" data-action="open-palette" aria-label="Open command palette">
+            <svg class="icon" aria-hidden="true"><use href="#i-search" /></svg>
+            <span class="search-trigger__text">Jump to</span>
+            <kbd data-shortcut="palette">⌘K</kbd>
+          </button>
+          <button class="icon-btn" type="button" id="installBtn" data-action="install" aria-label="Install PATAB" hidden>
+            <svg class="icon" aria-hidden="true"><use href="#i-install" /></svg>
+          </button>
+          <button class="icon-btn" type="button" data-action="toggle-theme" aria-label="Toggle dark and light theme" id="themeToggle">
+            <svg class="icon icon--sun" aria-hidden="true"><use href="#i-sun" /></svg>
+            <svg class="icon icon--moon" aria-hidden="true"><use href="#i-moon" /></svg>
+          </button>
+          <button class="icon-btn" type="button" data-action="open-settings" aria-label="Open settings">
+            <svg class="icon" aria-hidden="true"><use href="#i-settings" /></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero" aria-labelledby="greeting">
+      <div class="hero__top">
+        <div class="hero__clock">
+          <p class="eyebrow" id="greeting">Good morning</p>
+          <h1 class="clock" id="clock">09:41</h1>
+          <p class="dateline"><span id="date">Sunday, 19 October</span></p>
+        </div>
+        <div class="hero__aside">
+          <div class="weather" id="weatherSlot"></div>
+          <button class="pill" type="button" data-action="open-shortcuts">
+            <svg class="icon" aria-hidden="true"><use href="#i-keyboard" /></svg>
+            <span>Shortcuts</span>
+            <kbd>?</kbd>
+          </button>
+        </div>
+      </div>
+
+      <div class="search-wrap">
+        <form class="search" id="searchForm" role="search" autocomplete="off">
+          <svg class="search__icon icon" aria-hidden="true"><use href="#i-search" /></svg>
+          <input
+            id="searchInput"
+            name="q"
+            type="text"
+            placeholder="Search your links, or type !g to search the web"
+            aria-label="Search links or the web"
+            role="combobox"
+            aria-expanded="false"
+            aria-controls="searchResults"
+            aria-autocomplete="list"
+            spellcheck="false"
+            maxlength="300"
+          />
+          <button class="search__clear" type="button" data-action="clear-search" aria-label="Clear search" hidden>
+            <svg class="icon" aria-hidden="true"><use href="#i-close" /></svg>
+          </button>
+          <kbd class="search__kbd" data-shortcut="focus-search">/</kbd>
+        </form>
+        <div class="search-pop" id="searchResults" role="listbox" aria-label="Search results" hidden></div>
+      </div>
+
+      <div class="hints">
+        <span class="hints__label">Try</span>
+        <button type="button" data-bang="gh">!gh patab</button>
+        <button type="button" data-bang="yt">!yt lofi</button>
+        <button type="button" data-bang="g">!g weather</button>
+        <span class="hints__sep" aria-hidden="true"></span>
+        <button type="button" data-action="add-link"><svg class="icon" aria-hidden="true"><use href="#i-plus" /></svg> Add a tile</button>
+      </div>
+    </section>
+
+    <main class="dashboard" id="main">
+      <section class="panel panel--links" aria-labelledby="linksTitle">
+        <header class="panel__head">
+          <div>
+            <h2 id="linksTitle">Launchpad</h2>
+            <p id="linksMeta">Your daily shortcuts</p>
+          </div>
+          <div class="panel__tools">
+            <button class="btn btn--ghost btn--sm" type="button" data-action="add-folder" aria-label="Add a folder">
+              <svg class="icon" aria-hidden="true"><use href="#i-folder" /></svg>
+              <span class="btn__label">Folder</span>
+            </button>
+            <button class="btn btn--accent btn--sm" type="button" data-action="add-link" aria-label="Add a link">
+              <svg class="icon" aria-hidden="true"><use href="#i-plus" /></svg>
+              <span class="btn__label">Link</span>
+            </button>
+          </div>
+        </header>
+        <div class="tiles" id="tiles"></div>
+        <footer class="panel__foot">
+          <span id="linkCount">0 tiles</span>
+          <button class="text-btn" type="button" data-action="add-link">Add a tile</button>
+        </footer>
+      </section>
+
+      <section class="panel panel--notes" aria-labelledby="notesTitle">
+        <header class="panel__head">
+          <div>
+            <h2 id="notesTitle">Scratchpad</h2>
+            <p>Autosaves as you type</p>
+          </div>
+          <span class="status" id="noteStatus">Saved</span>
+        </header>
+        <label class="sr-only" for="notes">Scratchpad</label>
+        <textarea id="notes" maxlength="20000" placeholder="Ideas, snippets, anything…"></textarea>
+        <footer class="panel__foot">
+          <span id="noteMeta">0 words</span>
+          <button class="text-btn" type="button" data-action="clear-notes">Clear</button>
+        </footer>
+      </section>
+
+      <section class="panel panel--tasks" aria-labelledby="tasksTitle">
+        <header class="panel__head">
+          <div>
+            <h2 id="tasksTitle">Today</h2>
+            <p id="taskMeta">Nothing yet</p>
+          </div>
+          <button class="icon-btn icon-btn--sm" type="button" data-action="clear-done" aria-label="Clear completed tasks" title="Clear completed tasks">
+            <svg class="icon" aria-hidden="true"><use href="#i-check" /></svg>
+          </button>
+        </header>
+        <div class="taskbar" aria-hidden="true"><i id="taskBar"></i></div>
+        <ul class="tasks" id="tasks"></ul>
+        <form class="task-add" id="taskForm">
+          <label class="sr-only" for="taskInput">New task</label>
+          <input id="taskInput" type="text" maxlength="180" placeholder="Add a task…" autocomplete="off" />
+          <button type="submit" aria-label="Add task"><svg class="icon" aria-hidden="true"><use href="#i-plus" /></svg></button>
+        </form>
+      </section>
+
+      <section class="panel panel--focus" aria-labelledby="focusTitle">
+        <header class="panel__head">
+          <div>
+            <h2 id="focusTitle">Focus</h2>
+            <p>One thing at a time</p>
+          </div>
+          <button class="chip" type="button" data-action="cycle-focus" id="focusPreset" aria-label="Change focus duration">25 min</button>
+        </header>
+        <div class="focus__body">
+          <div class="ring">
+            <svg viewBox="0 0 120 120" aria-hidden="true">
+              <circle class="ring__track" cx="60" cy="60" r="52" />
+              <circle class="ring__value" id="focusRing" cx="60" cy="60" r="52" />
+            </svg>
+            <span class="ring__time" id="focusTime">25:00</span>
+          </div>
+          <div class="focus__controls">
+            <button class="btn btn--accent" type="button" data-action="focus-toggle" id="focusToggle">
+              <svg class="icon" aria-hidden="true"><use href="#i-play" /></svg>
+              <span>Start</span>
+            </button>
+            <button class="btn btn--ghost" type="button" data-action="focus-reset">
+              <svg class="icon" aria-hidden="true"><use href="#i-reset" /></svg>
+              <span>Reset</span>
+            </button>
+            <p class="focus__hint" id="focusHint">25 minutes of deep work</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel panel--privacy" aria-labelledby="privacyTitle">
+        <div class="privacy__head">
+          <span class="badge"><svg class="icon" aria-hidden="true"><use href="#i-shield" /></svg> Local-first</span>
+          <span class="status status--dot" id="saveState">All changes saved</span>
+        </div>
+        <h2 id="privacyTitle">No account. No cloud. No noise.</h2>
+        <p>Everything lives in this browser. Export a backup anytime — your tab, your rules.</p>
+        <div class="stats">
+          <div><strong id="statLinks">0</strong><span>tiles</span></div>
+          <div><strong id="statBoards">0</strong><span>boards</span></div>
+          <div><strong id="statTasks">0</strong><span>tasks done</span></div>
+          <div><strong id="statSize">0 KB</strong><span>local data</span></div>
+        </div>
+        <div class="privacy__actions">
+          <button class="text-btn" type="button" data-action="export">Export backup</button>
+          <button class="text-btn" type="button" data-action="open-settings">Settings</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p><span class="footer__dot" aria-hidden="true"></span> Local-first. Nothing leaves this tab.</p>
+      <nav aria-label="Footer">
+        <button class="text-btn" type="button" data-action="open-shortcuts">Keyboard shortcuts</button>
+        <a class="text-btn" href="https://github.com/ilyasaalmadani/patab" target="_blank" rel="noreferrer noopener">GitHub</a>
+        <span class="footer__muted">MIT · v1.0.0</span>
+      </nav>
+    </footer>
+
+    <dialog class="sheet sheet--center" id="linkDialog" aria-labelledby="linkDialogTitle">
+      <form class="form" id="linkForm" novalidate>
+        <header class="sheet__head">
+          <div>
+            <p class="sheet__kicker">Launchpad</p>
+            <h2 id="linkDialogTitle">New link</h2>
+          </div>
+          <button class="icon-btn" type="button" data-close aria-label="Close dialog">
+            <svg class="icon" aria-hidden="true"><use href="#i-close" /></svg>
+          </button>
+        </header>
+        <input type="hidden" id="linkId" />
+        <div class="field">
+          <label for="linkTitle">Title</label>
+          <input id="linkTitle" type="text" maxlength="60" placeholder="GitHub" autocomplete="off" />
+        </div>
+        <div class="field">
+          <label for="linkUrl">URL</label>
+          <input id="linkUrl" type="text" inputmode="url" placeholder="github.com" autocomplete="off" spellcheck="false" />
+          <p class="field__error" id="linkError" hidden></p>
+        </div>
+        <div class="field">
+          <span class="field__label">Color</span>
+          <div class="swatches" id="linkTones" role="radiogroup" aria-label="Tile color"></div>
+        </div>
+        <footer class="sheet__foot">
+          <button class="btn btn--danger" type="button" data-action="delete-link" id="linkDelete" hidden>
+            <svg class="icon" aria-hidden="true"><use href="#i-trash" /></svg>
+            Delete
+          </button>
+          <span class="spacer"></span>
+          <button class="btn btn--ghost" type="button" data-close>Cancel</button>
+          <button class="btn btn--accent" type="submit">Save link</button>
+        </footer>
+      </form>
+    </dialog>
+
+    <dialog class="sheet sheet--center" id="folderDialog" aria-labelledby="folderDialogTitle">
+      <form class="form" id="folderForm" novalidate>
+        <header class="sheet__head">
+          <div>
+            <p class="sheet__kicker">Launchpad</p>
+            <h2 id="folderDialogTitle">New folder</h2>
+          </div>
+          <button class="icon-btn" type="button" data-close aria-label="Close dialog">
+            <svg class="icon" aria-hidden="true"><use href="#i-close" /></svg>
+          </button>
+        </header>
+        <input type="hidden" id="folderId" />
+        <div class="field">
+          <label for="folderTitle">Folder name</label>
+          <input id="folderTitle" type="text" maxlength="40" placeholder="Studio" autocomplete="off" />
+        </div>
+        <div class="field">
+          <span class="field__label">Links inside</span>
+          <div class="folder-rows" id="folderRows"></div>
+          <button class="text-btn" type="button" data-action="add-folder-row">
+            <svg class="icon" aria-hidden="true"><use href="#i-plus" /></svg> Add link
+          </button>
+          <p class="field__error" id="folderError" hidden></p>
+        </div>
+        <footer class="sheet__foot">
+          <button class="btn btn--danger" type="button" data-action="delete-folder" id="folderDelete" hidden>
+            <svg class="icon" aria-hidden="true"><use href="#i-trash" /></svg>
+            Delete
+          </button>
+          <span class="spacer"></span>
+          <button class="btn btn--ghost" type="button" data-close>Cancel</button>
+          <button class="btn btn--accent" type="submit">Save folder</button>
+        </footer>
+      </form>
+    </dialog>
+
+    <dialog class="sheet sheet--center" id="boardDialog" aria-labelledby="boardDialogTitle">
+      <form class="form" id="boardForm" novalidate>
+        <header class="sheet__head">
+          <div>
+            <p class="sheet__kicker">Boards</p>
+            <h2 id="boardDialogTitle">New board</h2>
+          </div>
+          <button class="icon-btn" type="button" data-close aria-label="Close dialog">
+            <svg class="icon" aria-hidden="true"><use href="#i-close" /></svg>
+          </button>
+        </header>
+        <input type="hidden" id="boardId" />
+        <div class="field">
+          <label for="boardName">Board name</label>
+          <input id="boardName" type="text" maxlength="32" placeholder="Workshop" autocomplete="off" />
+        </div>
+        <div class="field">
+          <label for="boardSymbol">Mark</label>
+          <input id="boardSymbol" type="text" maxlength="2" placeholder="◇" autocomplete="off" />
+          <p class="field__hint">One or two characters, shown in the board switcher.</p>
+        </div>
+        <footer class="sheet__foot">
+          <button class="btn btn--danger" type="button" data-action="delete-board" id="boardDelete" hidden>
+            <svg class="icon" aria-hidden="true"><use href="#i-trash" /></svg>
+            Delete
+          </button>
+          <span class="spacer"></span>
+          <button class="btn btn--ghost" type="button" data-close>Cancel</button>
+          <button class="btn btn--accent" type="submit">Save board</button>
+        </footer>
+      </form>
+    </dialog>
+
+    <dialog class="sheet sheet--center sheet--folder" id="folderViewDialog" aria-labelledby="folderViewTitle">
+      <div class="folder-view">
+        <header class="sheet__head">
+          <div class="folder-view__title">
+            <span class="folder-view__icon"><svg class="icon" aria-hidden="true"><use href="#i-folder" /></svg></span>
+            <div>
+              <p class="sheet__kicker">Folder</p>
+              <h2 id="folderViewTitle">Studio</h2>
+            </div>
+          </div>
+          <div class="folder-view__tools">
+            <button class="icon-btn" type="button" data-action="edit-open-folder" aria-label="Edit folder">
+              <svg class="icon" aria-hidden="true"><use href="#i-edit" /></svg>
+            </button>
+            <button class="icon-btn" type="button" data-close aria-label="Close folder">
+              <svg class="icon" aria-hidden="true"><use href="#i-close" /></svg>
+            </button>
+          </div>
+        </header>
+        <div class="folder-list" id="folderList"></div>
+      </div>
+    </dialog>
+
+    <dialog class="palette" id="paletteDialog" aria-labelledby="paletteLabel">
+      <div class="palette__search">
+        <svg class="icon" aria-hidden="true"><use href="#i-command" /></svg>
+        <label class="sr-only" id="paletteLabel" for="paletteInput">Command palette</label>
+        <input
+          id="paletteInput"
+          type="text"
+          placeholder="Jump to a link, or run a command…"
+          role="combobox"
+          aria-expanded="true"
+          aria-controls="paletteResults"
+          aria-autocomplete="list"
+          autocomplete="off"
+          spellcheck="false"
+          maxlength="300"
+        />
+        <kbd>esc</kbd>
+      </div>
+      <div class="palette__results" id="paletteResults" role="listbox" aria-label="Commands and links"></div>
+      <footer class="palette__foot">
+        <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+        <span><kbd>↵</kbd> open</span>
+        <span><kbd>esc</kbd> close</span>
+      </footer>
+    </dialog>
+
+    <dialog class="sheet sheet--center sheet--shortcuts" id="shortcutsDialog" aria-labelledby="shortcutsTitle">
+      <div class="shortcuts">
+        <header class="sheet__head">
+          <div>
+            <p class="sheet__kicker">Move faster</p>
+            <h2 id="shortcutsTitle">Keyboard shortcuts</h2>
+          </div>
+          <button class="icon-btn" type="button" data-close aria-label="Close shortcuts">
+            <svg class="icon" aria-hidden="true"><use href="#i-close" /></svg>
+          </button>
+        </header>
+        <div class="shortcuts__grid" id="shortcutsGrid"></div>
+        <footer class="shortcuts__foot">
+          <span class="badge"><svg class="icon" aria-hidden="true"><use href="#i-shield" /></svg> Works offline</span>
+          <span class="footer__muted">Tip: press <kbd>?</kbd> anywhere to reopen this.</span>
+        </footer>
+      </div>
+    </dialog>
+
+    <dialog class="settings" id="settingsDialog" aria-labelledby="settingsTitle">
+      <div class="settings__inner">
+        <header class="settings__head">
+          <div>
+            <p class="sheet__kicker">Make it yours</p>
+            <h2 id="settingsTitle">Settings</h2>
+          </div>
+          <button class="icon-btn" type="button" data-close aria-label="Close settings">
+            <svg class="icon" aria-hidden="true"><use href="#i-close" /></svg>
+          </button>
+        </header>
+
+        <div class="settings__body">
+          <section class="settings__section">
+            <h3>Appearance</h3>
+            <div class="field">
+              <span class="field__label">Theme</span>
+              <div class="segmented" role="radiogroup" aria-label="Theme">
+                <label><input type="radio" name="theme" value="system" /><span>System</span></label>
+                <label><input type="radio" name="theme" value="dark" /><span>Dark</span></label>
+                <label><input type="radio" name="theme" value="light" /><span>Light</span></label>
+              </div>
+            </div>
+            <div class="field">
+              <span class="field__label">Accent</span>
+              <div class="swatches" id="accentSwatches" role="radiogroup" aria-label="Accent color"></div>
+            </div>
+            <div class="field">
+              <label for="bgSelect">Background</label>
+              <select id="bgSelect">
+                <option value="aurora">Aurora</option>
+                <option value="grid">Grid</option>
+                <option value="plain">Plain</option>
+              </select>
+            </div>
+          </section>
+
+          <section class="settings__section">
+            <h3>Clock</h3>
+            <label class="toggle">
+              <span><strong>24-hour clock</strong><small>Show 18:30 instead of 6:30 PM</small></span>
+              <input type="checkbox" id="use24h" />
+            </label>
+          </section>
+
+          <section class="settings__section">
+            <h3>Weather</h3>
+            <label class="toggle">
+              <span><strong>Show local weather</strong><small>Uses your location or a city you choose</small></span>
+              <input type="checkbox" id="weatherEnabled" />
+            </label>
+            <div class="field">
+              <label for="cityInput">City</label>
+              <div class="inputrow">
+                <input id="cityInput" type="text" placeholder="Jakarta" autocomplete="off" maxlength="60" />
+                <button class="btn btn--ghost" type="button" data-action="search-city">Search</button>
+              </div>
+              <div class="city-results" id="cityResults"></div>
+              <p class="field__hint" id="weatherLabel">No location set</p>
+            </div>
+          </section>
+
+          <section class="settings__section">
+            <h3>Privacy &amp; data</h3>
+            <label class="toggle">
+              <span><strong>Site icons</strong><small>Fetch favicons from Google. Off means tidy monograms.</small></span>
+              <input type="checkbox" id="siteIcons" />
+            </label>
+            <div class="settingrow">
+              <span><strong>Backup</strong><small>One JSON file. Yours forever.</small></span>
+              <div class="settingrow__actions">
+                <button class="btn btn--ghost btn--sm" type="button" data-action="export">
+                  <svg class="icon" aria-hidden="true"><use href="#i-download" /></svg> Export
+                </button>
+                <button class="btn btn--ghost btn--sm" type="button" data-action="import">
+                  <svg class="icon" aria-hidden="true"><use href="#i-upload" /></svg> Import
+                </button>
+              </div>
+            </div>
+            <button class="btn btn--danger btn--wide" type="button" data-action="reset">Reset all data</button>
+            <p class="field__hint" id="storageMeta"></p>
+          </section>
+
+          <section class="settings__section">
+            <h3>Boards</h3>
+            <div class="board-list" id="boardList"></div>
+            <button class="btn btn--ghost btn--sm" type="button" data-action="add-board">
+              <svg class="icon" aria-hidden="true"><use href="#i-plus" /></svg> New board
+            </button>
+          </section>
+
+          <section class="settings__section settings__about">
+            <div>
+              <strong>PATAB <span id="versionLabel">v1.0.0</span></strong>
+              <small>MIT License · made for quiet browsing</small>
+            </div>
+            <a class="text-btn" href="https://github.com/ilyasaalmadani/patab" target="_blank" rel="noreferrer noopener">
+              <svg class="icon" aria-hidden="true"><use href="#i-github" /></svg> Source
+            </a>
+          </section>
+        </div>
+      </div>
+    </dialog>
+
+    <input type="file" id="importFile" accept="application/json,.json" hidden />
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+{
+  "name": "PATAB \u2014 Papan Tab",
+  "short_name": "PATAB",
+  "description": "A calm, local-first dashboard for your new tab: links, notes, tasks and focus in one quiet place.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": [
+    "window-controls-overlay",
+    "standalone",
+    "minimal-ui"
+  ],
+  "orientation": "any",
+  "background_color": "#07090e",
+  "theme_color": "#07090e",
+  "categories": [
+    "productivity",
+    "utilities"
+  ],
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Open settings",
+      "short_name": "Settings",
+      "url": "./#settings"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "docs/screenshots/dashboard-dark.png",
+      "sizes": "2400x1650",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "PATAB dashboard"
+    },
+    {
+      "src": "docs/screenshots/mobile.png",
+      "sizes": "780x2000",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "PATAB on mobile"
+    }
+  ]
+}

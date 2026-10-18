@@ -1,0 +1,21 @@
+# Dependencies (development only)
+node_modules/
+
+# Build and test output
+_site/
+dist/
+test-results/
+playwright-report/
+blob-report/
+*.log
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Local environment
+.env
+.env.local
