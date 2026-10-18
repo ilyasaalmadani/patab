@@ -26,7 +26,8 @@ npm run dev
 ```
 
 There is no build step and nothing to install to run the app. Open
-<http://localhost:4173>.
+<http://localhost:4173>. This repository intentionally has no hosted CI workflow:
+run the checks on your own machine before pushing.
 
 For screenshots or the optional browser smoke test:
 

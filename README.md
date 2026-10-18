@@ -231,9 +231,9 @@ no Actions minutes required:
 The repository includes a `.nojekyll` file so the app is served exactly as written. All
 asset paths are relative, so it also works from a subpath such as `/patab/`.
 
-If your account has GitHub Actions available, the included `ci.yml` and `pages.yml`
-workflows are optional. In that case set **Settings → Pages → Source** to
-**GitHub Actions** and push to `main`; `pages.yml` will publish the app after tests pass.
+All checks run locally on your machine. The repository intentionally ships **no hosted
+CI workflow**, so pushing does not consume Actions minutes or require billing. The Pages
+build above is GitHub's free static branch deployment, not an Actions job.
 
 Cloudflare Pages, Netlify, Vercel and any static host work too. Use no build command and
 serve the repository root.
