@@ -1784,9 +1784,14 @@ function handleAction(node, event) {
       break;
     case 'pick-accent':
       state.settings.accent = node.dataset.accentId;
+      $$('#accentSwatches .swatch').forEach((swatch) => {
+        swatch.setAttribute(
+          'aria-checked',
+          String(swatch.dataset.accentId === state.settings.accent),
+        );
+      });
       persist();
       withViewTransition(applyAppearance);
-      renderSettings(true);
       break;
     case 'add-folder-row': {
       const added = addFolderRow();
@@ -2246,6 +2251,7 @@ function chooseCity(node) {
   persist();
   renderWeather();
   renderSettings(true);
+  $('#cityResults')?.replaceChildren();
   loadWeather(true);
   toast(`Weather set to ${label}.`);
 }
@@ -2496,9 +2502,8 @@ function init() {
   bindDragAndDrop();
   bindGlobalKeys();
   bindWeather();
-  bindInstall();
-  bindServiceWorker();
   bindCrossTabSync();
+  window.addEventListener('pagehide', persist);
 
   renderAll();
   renderSettings(true);
@@ -2511,4 +2516,6 @@ function init() {
   if (location.hash === '#settings') openSettings();
 }
 
+bindInstall();
+bindServiceWorker();
 requestAnimationFrame(() => requestAnimationFrame(init));
