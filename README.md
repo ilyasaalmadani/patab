@@ -16,7 +16,7 @@
   <img src="https://img.shields.io/badge/ZERO_RUNTIME_DEPS-0b0e14?style=for-the-badge&amp;labelColor=1a1f2b" alt="Zero runtime dependencies" />
   <img src="https://img.shields.io/badge/PWA-OFFLINE-0b0e14?style=for-the-badge&amp;labelColor=1a1f2b" alt="Installable PWA with offline support" />
   <img src="https://img.shields.io/badge/LIGHTHOUSE-98_%C2%B7_100_%C2%B7_100_%C2%B7_100-0b0e14?style=for-the-badge&amp;labelColor=1a1f2b" alt="Lighthouse mobile: 98 performance, 100 accessibility, 100 best practices, 100 SEO" />
-  <a href="https://github.com/ilyasaalmadani/patab/actions/workflows/ci.yml"><img src="https://github.com/ilyasaalmadani/patab/actions/workflows/ci.yml/badge.svg" alt="CI" /></a>
+  <img src="https://img.shields.io/badge/TESTS-9_PASSING-0b0e14?style=for-the-badge&amp;labelColor=1a1f2b" alt="9 unit tests passing" />
 </p>
 
 <p align="center">
@@ -220,16 +220,23 @@ are rejected, strings are clamped, and IDs are de-duplicated. Rendering uses
 
 ## Deploy your own
 
-The included GitHub Actions workflow deploys the static app to GitHub Pages on every
-push to `main`. To use it:
+PATAB is a static site. The simplest deployment is GitHub Pages with a branch source —
+no Actions minutes required:
 
 1. Fork or clone the repository.
-2. In **Settings → Pages**, set **Source** to **GitHub Actions**.
-3. Push to `main`. The workflow publishes the app.
+2. In **Settings → Pages**, choose **Deploy from a branch**.
+3. Select `main` and the `/ (root)` folder, then save.
+4. Open `https://<user>.github.io/patab/`.
 
-Cloudflare Pages, Netlify, Vercel and any static host work too. Use no build command
-and serve the repository root. All asset paths are relative, so the app works from a
-subpath such as `/patab/`.
+The repository includes a `.nojekyll` file so the app is served exactly as written. All
+asset paths are relative, so it also works from a subpath such as `/patab/`.
+
+If your account has GitHub Actions available, the included `ci.yml` and `pages.yml`
+workflows are optional. In that case set **Settings → Pages → Source** to
+**GitHub Actions** and push to `main`; `pages.yml` will publish the app after tests pass.
+
+Cloudflare Pages, Netlify, Vercel and any static host work too. Use no build command and
+serve the repository root.
 
 ## Roadmap
 
