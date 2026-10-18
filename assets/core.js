@@ -288,10 +288,21 @@ function normalizeBoard(raw) {
 function normalizeSettings(raw) {
   const source = raw && typeof raw === 'object' ? raw : {};
   const weather = source.weather && typeof source.weather === 'object' ? source.weather : {};
+  const hasRawCoords =
+    weather.lat !== null &&
+    weather.lat !== undefined &&
+    weather.lat !== '' &&
+    weather.lon !== null &&
+    weather.lon !== undefined &&
+    weather.lon !== '';
   const lat = Number(weather.lat);
   const lon = Number(weather.lon);
   const hasCoords =
-    Number.isFinite(lat) && Number.isFinite(lon) && Math.abs(lat) <= 90 && Math.abs(lon) <= 180;
+    hasRawCoords &&
+    Number.isFinite(lat) &&
+    Number.isFinite(lon) &&
+    Math.abs(lat) <= 90 &&
+    Math.abs(lon) <= 180;
 
   return {
     theme: ['system', 'dark', 'light'].includes(source.theme) ? source.theme : DEFAULT_SETTINGS.theme,

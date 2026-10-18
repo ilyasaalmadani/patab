@@ -116,3 +116,21 @@ test('moveItem reorders without mutating the source', () => {
   assert.deepEqual(source, ['a', 'b', 'c']);
   assert.equal(moveItem(source, 5, 0), source);
 });
+
+test('unset weather stays unset after normalization', () => {
+  const state = createSeedState();
+  state.settings.weather = { enabled: false, lat: null, lon: null, label: '' };
+  const normalized = normalizeState(JSON.parse(JSON.stringify(state)));
+  assert.equal(normalized.settings.weather.lat, null);
+  assert.equal(normalized.settings.weather.lon, null);
+  assert.equal(normalized.settings.weather.enabled, false);
+});
+
+test('coordinates at zero are valid when explicitly set', () => {
+  const state = createSeedState();
+  state.settings.weather = { enabled: true, lat: 0, lon: 0, label: 'Null Island' };
+  const normalized = normalizeState(JSON.parse(JSON.stringify(state)));
+  assert.equal(normalized.settings.weather.lat, 0);
+  assert.equal(normalized.settings.weather.lon, 0);
+  assert.equal(normalized.settings.weather.enabled, true);
+});

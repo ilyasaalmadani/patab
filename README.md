@@ -16,7 +16,7 @@
   <img src="https://img.shields.io/badge/ZERO_RUNTIME_DEPS-0b0e14?style=for-the-badge&amp;labelColor=1a1f2b" alt="Zero runtime dependencies" />
   <img src="https://img.shields.io/badge/PWA-OFFLINE-0b0e14?style=for-the-badge&amp;labelColor=1a1f2b" alt="Installable PWA with offline support" />
   <img src="https://img.shields.io/badge/LIGHTHOUSE-98_%C2%B7_100_%C2%B7_100_%C2%B7_100-0b0e14?style=for-the-badge&amp;labelColor=1a1f2b" alt="Lighthouse mobile: 98 performance, 100 accessibility, 100 best practices, 100 SEO" />
-  <img src="https://img.shields.io/badge/TESTS-9_PASSING-0b0e14?style=for-the-badge&amp;labelColor=1a1f2b" alt="9 unit tests passing" />
+  <img src="https://img.shields.io/badge/TESTS-11_PASSING-0b0e14?style=for-the-badge&amp;labelColor=1a1f2b" alt="11 unit tests passing" />
 </p>
 
 <p align="center">
@@ -120,7 +120,7 @@ bar. A dedicated browser-extension wrapper is on the roadmap.
 ### Tests
 
 ```bash
-npm test       # 9 unit tests for state normalization, search, URLs and helpers
+npm test       # 11 unit tests for state normalization, search, URLs and helpers
 npm run check  # verifies local asset references, manifest icons, SW shell and LICENSE
 ```
 
